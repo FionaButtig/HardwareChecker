@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|solutionrelative:hardwarechecker\\edithardwarewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|c:\\users\\sever\\onedrive\\documents\\projects\\hardwarechecker\\hardwarechecker\\edithardwarewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\hardwarechecker\\edithardwarewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|solutionrelative:hardwarechecker\\edithardwarewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|c:\\users\\sever\\onedrive\\documents\\projects\\hardwarechecker\\hardwarechecker\\edithardwarewindow.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\hardwarechecker\\edithardwarewindow.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|solutionrelative:hardwarechecker\\edithardwarewindow.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
@@ -19,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|solutionrelative:hardwarechecker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|c:\\users\\sever\\onedrive\\documents\\projects\\hardwarechecker\\hardwarechecker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\hardwarechecker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|solutionrelative:hardwarechecker\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,8 +30,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -41,8 +49,7 @@
               "ToolTip": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\EditHardwareWindow.xaml",
               "RelativeToolTip": "HardwareChecker\\EditHardwareWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-16T07:49:56.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T07:49:56.883Z"
             },
             {
               "$type": "Document",
@@ -52,7 +59,7 @@
               "RelativeDocumentMoniker": "HardwareChecker\\EditHardwareWindow.xaml.cs",
               "ToolTip": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\EditHardwareWindow.xaml.cs",
               "RelativeToolTip": "HardwareChecker\\EditHardwareWindow.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAmwAwAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T07:49:33.978Z",
               "EditorCaption": ""
@@ -67,8 +74,7 @@
               "RelativeToolTip": "HardwareChecker\\EditHardwareWindow.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAwC8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-16T07:49:25.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T07:49:25.737Z"
             },
             {
               "$type": "Document",
@@ -80,8 +86,7 @@
               "RelativeToolTip": "HardwareChecker\\MainWindow.xaml.cs",
               "ViewState": "AgIAAA8BAAAAAAAAAAAkwDABAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T07:43:16.396Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T07:43:16.396Z"
             },
             {
               "$type": "Document",
@@ -92,8 +97,7 @@
               "ToolTip": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\MainWindow.xaml",
               "RelativeToolTip": "HardwareChecker\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-16T07:40:46.558Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-16T07:40:46.558Z"
             }
           ]
         }

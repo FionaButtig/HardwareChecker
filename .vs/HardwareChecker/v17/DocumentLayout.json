@@ -33,15 +33,8 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EditHardwareWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\EditHardwareWindow.xaml",
-              "RelativeDocumentMoniker": "HardwareChecker\\EditHardwareWindow.xaml",
-              "ToolTip": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\EditHardwareWindow.xaml",
-              "RelativeToolTip": "HardwareChecker\\EditHardwareWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-16T07:49:56.883Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
@@ -55,6 +48,21 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-16T07:49:33.978Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EditHardwareWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\EditHardwareWindow.xaml",
+              "RelativeDocumentMoniker": "HardwareChecker\\EditHardwareWindow.xaml",
+              "ToolTip": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\EditHardwareWindow.xaml",
+              "RelativeToolTip": "HardwareChecker\\EditHardwareWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-16T07:49:56.883Z"
             },
             {
               "$type": "Document",

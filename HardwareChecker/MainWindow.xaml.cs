@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Management;
 using System.Text;
-using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,17 +12,20 @@ namespace HardwareInfoApp
 {
     public partial class MainWindow : Window
     {
-        private readonly string DataFolder;
+        private readonly DatabaseService _db;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            DataFolder = Path.Combine(
+            string dbFolder = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "HardwareLibrary");
 
-            Directory.CreateDirectory(DataFolder);
+            Directory.CreateDirectory(dbFolder);
+
+            string dbPath = Path.Combine(dbFolder, "hardware.db");
+            _db = new DatabaseService(dbPath);
 
             LoadLibrary();
         }
@@ -54,22 +55,21 @@ namespace HardwareInfoApp
                 return;
 
             snap.DisplayName = input;
-            SaveSnapshot(snap);
+            _db.SaveSnapshot(snap);
             LoadLibrary();
         }
 
         private void EditHardwareButton_Click(object sender, RoutedEventArgs e)
         {
             var snap = SnapshotList.SelectedItem as HardwareSnapshot;
-            if (snap == null)
-                return;
+            if (snap == null) return;
 
             var window = new EditHardwareWindow(snap);
             window.Owner = this;
 
             if (window.ShowDialog() == true)
             {
-                SaveSnapshot(snap);
+                _db.SaveSnapshot(snap);
                 DisplaySnapshot(snap);
                 LoadLibrary();
             }
@@ -89,11 +89,7 @@ namespace HardwareInfoApp
             if (result != MessageBoxResult.Yes)
                 return;
 
-            string path = GetSnapshotPath(snap.Id);
-
-            if (File.Exists(path))
-                File.Delete(path);
-
+            _db.DeleteSnapshot(snap.Id);
             InfoPanel.Children.Clear();
             LoadLibrary();
         }
@@ -111,23 +107,21 @@ namespace HardwareInfoApp
             var snapshot = CreateSnapshot();
             snapshot.DisplayName = name;
 
-            SaveSnapshot(snapshot);
+            _db.SaveSnapshot(snapshot);
             LoadLibrary();
             DisplaySnapshot(snapshot);
         }
 
         private void LoadLibrary()
         {
-            SnapshotList.ItemsSource = LoadSnapshots();
+            SnapshotList.ItemsSource = _db.LoadAllSnapshots();
         }
 
         private HardwareSnapshot CreateSnapshot()
         {
-            string id = Guid.NewGuid().ToString();
-
             return new HardwareSnapshot
             {
-                Id = id,
+                Id = Guid.NewGuid().ToString(),
                 DisplayName = Environment.MachineName + " (" + DateTime.Now.ToString("g") + ")",
                 ComputerName = Environment.MachineName,
                 UserName = Environment.UserName,
@@ -138,39 +132,6 @@ namespace HardwareInfoApp
                 Disk = ReadDiskInfo(),
                 Motherboard = ReadMotherboardInfo()
             };
-        }
-
-        private void SaveSnapshot(HardwareSnapshot snapshot)
-        {
-            string path = GetSnapshotPath(snapshot.Id);
-
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true
-            };
-
-            File.WriteAllText(path, JsonSerializer.Serialize(snapshot, options));
-        }
-
-        private string GetSnapshotPath(string id)
-        {
-            return Path.Combine(DataFolder, id + ".json");
-        }
-
-        private List<HardwareSnapshot> LoadSnapshots()
-        {
-            var list = new List<HardwareSnapshot>();
-
-            foreach (var file in Directory.GetFiles(DataFolder, "*.json"))
-            {
-                var json = File.ReadAllText(file);
-                var snap = JsonSerializer.Deserialize<HardwareSnapshot>(json);
-
-                if (snap != null)
-                    list.Add(snap);
-            }
-
-            return list.OrderByDescending(s => s.ScanDate).ToList();
         }
 
         private void DisplaySnapshot(HardwareSnapshot snap)
@@ -218,9 +179,7 @@ namespace HardwareInfoApp
         private string ReadCPUInfo()
         {
             var sb = new StringBuilder();
-
             using (var searcher = new ManagementObjectSearcher("select * from Win32_Processor"))
-            {
                 foreach (var obj in searcher.Get())
                 {
                     sb.AppendLine("Name: " + obj["Name"]);
@@ -228,86 +187,60 @@ namespace HardwareInfoApp
                     sb.AppendLine("Logical Processors: " + obj["NumberOfLogicalProcessors"]);
                     sb.AppendLine("Max Clock: " + obj["MaxClockSpeed"] + " MHz");
                 }
-            }
-
             return sb.ToString();
         }
 
         private string ReadGPUInfo()
         {
             var sb = new StringBuilder();
-
             using (var searcher = new ManagementObjectSearcher("select * from Win32_VideoController"))
-            {
                 foreach (var obj in searcher.Get())
                 {
                     double ramGB = Math.Round(
-                        Convert.ToDouble(obj["AdapterRAM"]) /
-                        (1024 * 1024 * 1024), 2);
-
+                        Convert.ToDouble(obj["AdapterRAM"]) / (1024 * 1024 * 1024), 2);
                     sb.AppendLine("Name: " + obj["Name"]);
                     sb.AppendLine("Driver: " + obj["DriverVersion"]);
                     sb.AppendLine("VRAM: " + ramGB + " GB");
                 }
-            }
-
             return sb.ToString();
         }
 
         private string ReadRAMInfo()
         {
             using (var searcher = new ManagementObjectSearcher("select * from Win32_ComputerSystem"))
-            {
                 foreach (var obj in searcher.Get())
                 {
-                    double total =
-                        Convert.ToDouble(obj["TotalPhysicalMemory"]) /
-                        (1024 * 1024 * 1024);
-
-                    return "Installed RAM: " +
-                           Math.Round(total, 2) + " GB";
+                    double total = Convert.ToDouble(obj["TotalPhysicalMemory"]) / (1024 * 1024 * 1024);
+                    return "Installed RAM: " + Math.Round(total, 2) + " GB";
                 }
-            }
-
             return "Unknown";
         }
 
         private string ReadDiskInfo()
         {
             var sb = new StringBuilder();
-
             using (var searcher = new ManagementObjectSearcher("select * from Win32_DiskDrive"))
-            {
                 foreach (var obj in searcher.Get())
                 {
-                    double size =
-                        Math.Round(Convert.ToDouble(obj["Size"]) /
-                        (1024 * 1024 * 1024), 2);
-
+                    double size = Math.Round(Convert.ToDouble(obj["Size"]) / (1024 * 1024 * 1024), 2);
                     sb.AppendLine("Model: " + obj["Model"]);
                     sb.AppendLine("Interface: " + obj["InterfaceType"]);
                     sb.AppendLine("Size: " + size + " GB");
                     sb.AppendLine();
                 }
-            }
-
             return sb.ToString();
         }
 
         private string ReadMotherboardInfo()
         {
             var sb = new StringBuilder();
-
             using (var searcher = new ManagementObjectSearcher("select * from Win32_BaseBoard"))
-            {
                 foreach (var obj in searcher.Get())
                 {
                     sb.AppendLine("Manufacturer: " + obj["Manufacturer"]);
                     sb.AppendLine("Product: " + obj["Product"]);
                     sb.AppendLine("Serial: " + obj["SerialNumber"]);
                 }
-            }
-
             return sb.ToString();
         }
     }
