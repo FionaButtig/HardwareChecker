@@ -1,0 +1,48 @@
+<Window x:Class="HardwareInfoApp.EditHardwareWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hardware bearbeiten"
+        Height="500"
+        Width="500"
+        Background="#1E1E1E"
+        WindowStartupLocation="CenterOwner">
+
+	<ScrollViewer>
+		<StackPanel Margin="20">
+
+			<TextBlock Text="CPU" Foreground="DeepSkyBlue"/>
+			<TextBox x:Name="CpuBox"
+                     Height="70"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
+
+			<TextBlock Text="GPU" Foreground="DeepSkyBlue" Margin="0,10,0,0"/>
+			<TextBox x:Name="GpuBox"
+                     Height="70"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
+
+			<TextBlock Text="RAM" Foreground="DeepSkyBlue" Margin="0,10,0,0"/>
+			<TextBox x:Name="RamBox"/>
+
+			<TextBlock Text="Disk" Foreground="DeepSkyBlue" Margin="0,10,0,0"/>
+			<TextBox x:Name="DiskBox"
+                     Height="70"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
+
+			<TextBlock Text="Motherboard" Foreground="DeepSkyBlue" Margin="0,10,0,0"/>
+			<TextBox x:Name="MotherboardBox"
+                     Height="70"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
+
+			<Button Content="Speichern"
+                    Height="35"
+                    Margin="0,20,0,0"
+                    Click="Save_Click"/>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</Window>

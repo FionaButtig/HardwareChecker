@@ -27,13 +27,11 @@ namespace HardwareInfoApp
             Directory.CreateDirectory(DataFolder);
 
             LoadLibrary();
-            ScanAndDisplayCurrentPC();
         }
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
             ScanAndDisplayCurrentPC();
-            LoadLibrary();
         }
 
         private void SnapshotList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,6 +58,23 @@ namespace HardwareInfoApp
             LoadLibrary();
         }
 
+        private void EditHardwareButton_Click(object sender, RoutedEventArgs e)
+        {
+            var snap = SnapshotList.SelectedItem as HardwareSnapshot;
+            if (snap == null)
+                return;
+
+            var window = new EditHardwareWindow(snap);
+            window.Owner = this;
+
+            if (window.ShowDialog() == true)
+            {
+                SaveSnapshot(snap);
+                DisplaySnapshot(snap);
+                LoadLibrary();
+            }
+        }
+
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             var snap = SnapshotList.SelectedItem as HardwareSnapshot;
@@ -75,6 +90,7 @@ namespace HardwareInfoApp
                 return;
 
             string path = GetSnapshotPath(snap.Id);
+
             if (File.Exists(path))
                 File.Delete(path);
 
@@ -84,8 +100,19 @@ namespace HardwareInfoApp
 
         private void ScanAndDisplayCurrentPC()
         {
+            string name = Interaction.InputBox(
+                "Bitte einen Namen für diesen Scan eingeben:",
+                "Scan benennen",
+                Environment.MachineName);
+
+            if (string.IsNullOrWhiteSpace(name))
+                name = Environment.MachineName + " (" + DateTime.Now.ToString("g") + ")";
+
             var snapshot = CreateSnapshot();
+            snapshot.DisplayName = name;
+
             SaveSnapshot(snapshot);
+            LoadLibrary();
             DisplaySnapshot(snapshot);
         }
 
@@ -102,11 +129,9 @@ namespace HardwareInfoApp
             {
                 Id = id,
                 DisplayName = Environment.MachineName + " (" + DateTime.Now.ToString("g") + ")",
-
                 ComputerName = Environment.MachineName,
                 UserName = Environment.UserName,
                 ScanDate = DateTime.Now,
-
                 CPU = ReadCPUInfo(),
                 GPU = ReadGPUInfo(),
                 RAM = ReadRAMInfo(),
@@ -140,6 +165,7 @@ namespace HardwareInfoApp
             {
                 var json = File.ReadAllText(file);
                 var snap = JsonSerializer.Deserialize<HardwareSnapshot>(json);
+
                 if (snap != null)
                     list.Add(snap);
             }
@@ -182,10 +208,17 @@ namespace HardwareInfoApp
                 FontSize = 14,
                 Margin = new Thickness(0, 0, 0, 10)
             });
+
+            InfoPanel.Children.Add(new Separator
+            {
+                Margin = new Thickness(0, 5, 0, 10)
+            });
         }
+
         private string ReadCPUInfo()
         {
             var sb = new StringBuilder();
+
             using (var searcher = new ManagementObjectSearcher("select * from Win32_Processor"))
             {
                 foreach (var obj in searcher.Get())
@@ -196,12 +229,14 @@ namespace HardwareInfoApp
                     sb.AppendLine("Max Clock: " + obj["MaxClockSpeed"] + " MHz");
                 }
             }
+
             return sb.ToString();
         }
 
         private string ReadGPUInfo()
         {
             var sb = new StringBuilder();
+
             using (var searcher = new ManagementObjectSearcher("select * from Win32_VideoController"))
             {
                 foreach (var obj in searcher.Get())
@@ -215,6 +250,7 @@ namespace HardwareInfoApp
                     sb.AppendLine("VRAM: " + ramGB + " GB");
                 }
             }
+
             return sb.ToString();
         }
 
@@ -232,12 +268,14 @@ namespace HardwareInfoApp
                            Math.Round(total, 2) + " GB";
                 }
             }
+
             return "Unknown";
         }
 
         private string ReadDiskInfo()
         {
             var sb = new StringBuilder();
+
             using (var searcher = new ManagementObjectSearcher("select * from Win32_DiskDrive"))
             {
                 foreach (var obj in searcher.Get())
@@ -252,12 +290,14 @@ namespace HardwareInfoApp
                     sb.AppendLine();
                 }
             }
+
             return sb.ToString();
         }
 
         private string ReadMotherboardInfo()
         {
             var sb = new StringBuilder();
+
             using (var searcher = new ManagementObjectSearcher("select * from Win32_BaseBoard"))
             {
                 foreach (var obj in searcher.Get())
@@ -267,6 +307,7 @@ namespace HardwareInfoApp
                     sb.AppendLine("Serial: " + obj["SerialNumber"]);
                 }
             }
+
             return sb.ToString();
         }
     }
