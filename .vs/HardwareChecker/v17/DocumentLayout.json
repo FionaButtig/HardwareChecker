@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|solutionrelative:hardwarechecker\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|c:\\users\\sever\\onedrive\\documents\\projects\\hardwarechecker\\hardwarechecker\\hardwaresnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\hardwarechecker\\hardwaresnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2B860D1-53B3-4DAB-AFE7-7694275C6511}|HardwareChecker\\HardwareChecker.csproj|solutionrelative:hardwarechecker\\hardwaresnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "HardwareChecker\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\MainWindow.xaml.cs",
               "RelativeToolTip": "HardwareChecker\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAmwL8AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAmwLEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-19T08:37:39.818Z",
               "IsPinned": true,
@@ -47,8 +47,7 @@
               "ToolTip": "C:\\Users\\sever\\OneDrive\\Documents\\Projects\\HardwareChecker\\HardwareChecker\\MainWindow.xaml",
               "RelativeToolTip": "HardwareChecker\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-20T08:02:07.403Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T08:02:07.403Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "HardwareChecker\\HardwareSnapshot.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T08:35:00.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T08:35:00.062Z"
             }
           ]
         }
